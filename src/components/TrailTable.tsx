@@ -7,10 +7,9 @@ export function TrailTable() {
   return (
     <div className="h-full flex flex-col">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-primary">Trail Ahead</h2>
         <button
           onClick={() => drawTrailCards(1)}
-          className="px-3 py-1 text-sm rounded bg-accent/20 hover:bg-accent/30 transition-colors"
+          className="px-3 py-2 text-sm rounded bg-green-600 hover:bg-green-700 transition-colors text-white"
         >
           Scout Ahead
         </button>

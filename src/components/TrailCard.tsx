@@ -70,8 +70,8 @@ export function TrailCard({ card }: TrailCardProps) {
     <div
       className={`
         card card-trail w-full transition-all duration-200
-        ${draggedOver ? 'ring-2 ring-accent bg-accent/10' : ''}
-        ${canComplete() ? 'ring-2 ring-success' : ''}
+        ${draggedOver ? 'ring-2 ring-yellow-400 bg-yellow-400/10' : ''}
+        ${canComplete() ? 'ring-2 ring-green-400' : ''}
       `}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -82,26 +82,26 @@ export function TrailCard({ card }: TrailCardProps) {
         
         <div className="flex-1">
           <div className="flex items-center justify-between mb-2">
-            <h3 className="font-semibold text-primary">{card.name}</h3>
-            <div className="text-sm px-2 py-1 rounded bg-primary/10">
+            <h3 className="font-semibold text-white">{card.name}</h3>
+            <div className="text-sm px-2 py-1 rounded bg-black/20 text-white">
               Difficulty: {card.difficulty}
             </div>
           </div>
           
-          <p className="text-sm text-text/80 mb-3">{card.description}</p>
+          <p className="text-sm text-white/90 mb-3">{card.description}</p>
           
           {/* Requirements */}
           <div className="space-y-2">
-            <h4 className="text-sm font-medium text-text/70">Requirements:</h4>
+            <h4 className="text-sm font-medium text-white/80">Requirements:</h4>
             <div className="grid grid-cols-2 gap-2">
               {card.requirements.map((req, index) => (
                 <div
                   key={index}
                   className={`
                     flex items-center justify-between px-2 py-1 rounded text-sm
-                    ${totals[req.type] >= req.value 
-                      ? 'bg-success/20 text-success' 
-                      : 'bg-text/10'
+                    ${totals[req.type] >= req.value
+                      ? 'bg-green-300/30 text-green-200'
+                      : 'bg-black/20 text-white'
                     }
                   `}
                 >
@@ -115,14 +115,14 @@ export function TrailCard({ card }: TrailCardProps) {
           {/* Used Gear */}
           {usedGearIds.length > 0 && (
             <div className="mt-3">
-              <h4 className="text-sm font-medium text-text/70 mb-1">Applied Gear:</h4>
+              <h4 className="text-sm font-medium text-white/80 mb-1">Applied Gear:</h4>
               <div className="flex flex-wrap gap-1">
                 {usedGearIds.map(gearId => {
                   const gear = gearHand.find(g => g.id === gearId);
                   return gear ? (
-                    <span 
+                    <span
                       key={gearId}
-                      className="text-xs px-2 py-1 rounded bg-secondary/20"
+                      className="text-xs px-2 py-1 rounded bg-black/20 text-white"
                     >
                       {gear.emoji} {gear.name}
                     </span>
@@ -136,7 +136,7 @@ export function TrailCard({ card }: TrailCardProps) {
           {canComplete() && (
             <button
               onClick={handleComplete}
-              className="mt-3 w-full py-2 px-4 rounded bg-success text-white hover:bg-success/80 transition-colors"
+              className="mt-3 w-full py-2 px-4 rounded bg-green-600 text-white hover:bg-green-700 transition-colors"
             >
               Complete Trail
             </button>

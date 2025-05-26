@@ -47,8 +47,7 @@ export function GearCard({ card, draggable = false, onClick, className = '' }: G
   return (
     <div
       className={`
-        card card-gear w-32 cursor-pointer select-none transition-all duration-200
-        ${getRarityColor(card.rarity)}
+        card card-gear-hand w-32 cursor-pointer select-none transition-all duration-200
         ${isDragging ? 'opacity-50 transform rotate-6' : 'hover:shadow-lg hover:-translate-y-1'}
         ${className}
       `}
@@ -65,38 +64,38 @@ export function GearCard({ card, draggable = false, onClick, className = '' }: G
         </div>
 
         {/* Name */}
-        <h4 className="text-sm font-semibold text-primary mb-1 line-clamp-2">
+        <h4 className="text-sm font-semibold text-gray-800 mb-1 line-clamp-2">
           {card.name}
         </h4>
 
         {/* Description */}
-        <p className="text-xs text-text/70 mb-3 flex-1 line-clamp-3">
+        <p className="text-xs text-gray-600 mb-3 flex-1 line-clamp-3">
           {card.description}
         </p>
 
         {/* Effects */}
         <div className="space-y-1 mb-2">
           {card.effects.map((effect, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="flex items-center justify-between text-xs"
             >
-              <span className="capitalize">{effect.type}</span>
-              <span className="font-medium text-accent">+{effect.value}</span>
+              <span className="capitalize text-gray-700">{effect.type}</span>
+              <span className="font-medium text-green-600">+{effect.value}</span>
             </div>
           ))}
         </div>
 
         {/* Durability */}
         <div className="flex items-center justify-between text-xs">
-          <span>Durability</span>
+          <span className="text-gray-700">Durability</span>
           <div className="flex space-x-1">
             {Array.from({ length: card.maxDurability }, (_, i) => (
               <div
                 key={i}
                 className={`
                   w-2 h-2 rounded-full
-                  ${i < card.durability ? 'bg-success' : 'bg-text/20'}
+                  ${i < card.durability ? 'bg-green-500' : 'bg-gray-300'}
                 `}
               />
             ))}
@@ -109,7 +108,7 @@ export function GearCard({ card, draggable = false, onClick, className = '' }: G
             e.stopPropagation();
             discardGearCard(card.id);
           }}
-          className="mt-2 text-xs text-error hover:text-error/80 transition-colors"
+          className="mt-2 text-xs text-red-600 hover:text-red-700 transition-colors"
         >
           Discard
         </button>

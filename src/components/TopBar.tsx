@@ -19,32 +19,29 @@ export function TopBar() {
   };
 
   return (
-    <div className="bg-surface/90 backdrop-blur-sm border-b border-border p-4">
+    <div className="header-area p-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
-        {/* Left: Zone Info */}
-        <div className="flex items-center space-x-4">
-          <div className="text-2xl">{currentZone.emoji}</div>
-          <div>
-            <h1 className="text-xl font-bold text-primary">
-              {currentZone.name}
-            </h1>
-            <p className="text-sm text-text/70">
-              {currentZone.description}
-            </p>
+        {/* Left: Zone & Time Info */}
+        <div className="flex items-center space-x-6">
+          <div className="text-left">
+            <div className="text-xs text-gray-600 mb-1">Zone & Time of day</div>
+            <div className="font-bold text-lg">
+              Zone 1 ({currentZone.name})
+            </div>
           </div>
         </div>
 
         {/* Center: Player Stats */}
         <div className="flex items-center space-x-6">
           <div className="text-center">
-            <div className="text-sm text-text/70">Energy</div>
+            <div className="text-sm text-gray-600">Energy</div>
             <div className="text-lg font-semibold">
               {player.energy}/{player.maxEnergy}
             </div>
           </div>
           
           <div className="text-center">
-            <div className="text-sm text-text/70">Progress</div>
+            <div className="text-sm text-gray-600">Progress</div>
             <div className="text-lg font-semibold">
               {player.progress}/{player.progressGoal}
             </div>
@@ -55,22 +52,23 @@ export function TopBar() {
         <div className="flex items-center space-x-4">
           <button
             onClick={advanceTime}
-            className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
+            className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-yellow-400 hover:bg-yellow-500 transition-colors"
             title="Advance Time"
           >
             <span className="text-xl">
               {timeOfDayEmoji[player.timeOfDay]}
             </span>
-            <span className="capitalize text-sm font-medium">
+            <span className="capitalize text-sm font-medium text-gray-800">
               {player.timeOfDay}
             </span>
           </button>
 
           <button
             onClick={() => toggleBookMenu()}
-            className="px-4 py-2 rounded-lg bg-secondary text-white hover:bg-secondary/80 transition-colors"
+            className="px-4 py-2 rounded-lg bg-green-700 text-white hover:bg-green-800 transition-colors flex items-center space-x-2"
           >
-            📖 Journal
+            <span className="text-red-600 bg-white px-2 py-1 rounded text-xs">📚</span>
+            <span>Journal</span>
           </button>
         </div>
       </div>

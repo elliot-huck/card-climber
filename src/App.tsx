@@ -27,42 +27,69 @@ function App() {
   }, [currentZone.id, player.timeOfDay]);
 
   return (
-    <div className="game-container min-h-screen bg-background text-text">
-      {/* Background decoration */}
-      <div className="fixed inset-0 opacity-5 pointer-events-none">
-        <div className="text-[20rem] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          {currentZone.emoji}
-        </div>
-      </div>
-
+    <div className="game-container min-h-screen text-white">
       {/* Main Game Layout */}
-      <div className="relative z-10 flex flex-col h-screen">
+      <div className="flex flex-col h-screen">
         {/* Top Bar */}
         <header className="flex-shrink-0">
           <TopBar />
         </header>
 
-        {/* Main Game Area */}
-        <main className="flex-1 flex overflow-hidden">
-          {/* Left Sidebar - Progress Track */}
-          <aside className="w-20 flex-shrink-0 p-2">
-            <ProgressTrack />
-          </aside>
+        {/* Main Game Board Area */}
+        <main className="flex-1 flex p-6 gap-6">
+          {/* Left Side - Trail and Bird Decks */}
+          <section className="flex flex-col gap-6 w-80">
+            {/* Trail Deck Area */}
+            <div className="trail-deck-area p-4">
+              <div className="text-white text-lg font-bold mb-4">Trail Deck</div>
+              <TrailTable />
+            </div>
 
-          {/* Center - Trail Table */}
-          <section className="flex-1 p-4 overflow-y-auto">
-            <TrailTable />
+            {/* Bird Deck Area */}
+            <div className="bird-deck-area p-4 h-48">
+              <div className="text-white text-lg font-bold mb-4">Bird Deck</div>
+              <div className="card card-bird w-24 h-32 flex items-center justify-center text-2xl">
+                🐦
+              </div>
+            </div>
           </section>
 
-          {/* Right Sidebar - Could be used for additional info */}
-          <aside className="w-16 flex-shrink-0 p-2">
-            {/* Reserved for future features */}
+          {/* Center - Empty space for future expansion */}
+          <section className="flex-1">
+            {/* This space can be used for additional game elements */}
+          </section>
+
+          {/* Right Side - Progress Track */}
+          <aside className="w-32 flex flex-col items-center">
+            <div className="text-white text-lg font-bold mb-4">Progress 4/8</div>
+            <ProgressTrack />
           </aside>
         </main>
 
-        {/* Bottom - Gear Hand */}
-        <footer className="flex-shrink-0 p-4 border-t border-border bg-surface/50 backdrop-blur-sm">
-          <GearHand />
+        {/* Bottom - Gear Deck and Hand */}
+        <footer className="flex-shrink-0 p-6">
+          <div className="flex gap-6">
+            {/* Gear Deck */}
+            <div className="gear-deck-area p-4 w-48">
+              <div className="text-white text-lg font-bold mb-4">Gear Deck</div>
+              <div className="flex gap-2">
+                <div className="card card-gear-item w-16 h-24 flex items-center justify-center">
+                  ⚙️
+                </div>
+              </div>
+            </div>
+
+            {/* Gear Hand */}
+            <div className="flex-1">
+              <GearHand />
+            </div>
+
+            {/* Gear Discard */}
+            <div className="gear-deck-area p-4 w-32">
+              <div className="text-white text-lg font-bold mb-4">Gear discard</div>
+              <div className="card card-gear-item w-16 h-24 border-4 border-yellow-600 bg-yellow-800"></div>
+            </div>
+          </div>
         </footer>
       </div>
 

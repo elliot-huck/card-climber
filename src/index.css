@@ -4,14 +4,29 @@
 
 /* CSS Variables for Zone-based Theming */
 :root {
-  /* Base Zone (Valley) - Default theme */
+  /* Game Board Colors - Based on mockup */
   --color-primary: #2D5F3F;
   --color-secondary: #4A7C59;
   --color-accent: #9ACD32;
-  --color-background: #F0F8F0;
+  --color-background: #8B4513; /* Brown game board background */
   --color-surface: #FFFFFF;
   --color-text: #1F2937;
   --color-border: #D1D5DB;
+  
+  /* Header area - Blue theme */
+  --color-header-bg: #87CEEB; /* Sky blue */
+  --color-header-text: #1F2937;
+  
+  /* Card deck colors */
+  --color-trail-deck: #228B22; /* Forest green */
+  --color-trail-deck-light: #90EE90; /* Light green */
+  --color-bird-deck: #DC143C; /* Crimson red */
+  --color-gear-deck: #DAA520; /* Goldenrod */
+  --color-gear-deck-light: #F0E68C; /* Khaki */
+  
+  /* Progress track colors */
+  --color-progress-empty: #8B7355; /* Darker brown */
+  --color-progress-filled: #228B22; /* Green */
   
   /* Common UI colors */
   --color-success: #10B981;
@@ -104,7 +119,7 @@ body {
 
 /* Card styles */
 .card {
-  @apply bg-surface border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+  @apply border-2 rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
 }
 
 .card-gear {
@@ -113,11 +128,74 @@ body {
 
 .card-trail {
   @apply aspect-[3/2] p-4;
+  background-color: var(--color-trail-deck);
+  border-color: #FFFFFF;
+  color: white;
+}
+
+.card-trail.light {
+  background-color: var(--color-trail-deck-light);
+  color: #1F2937;
+}
+
+.card-bird {
+  background-color: var(--color-bird-deck);
+  border-color: #FFFFFF;
+  color: white;
+}
+
+.card-gear-item {
+  background-color: var(--color-gear-deck);
+  border-color: #FFFFFF;
+  color: #1F2937;
+}
+
+.card-gear-hand {
+  background-color: var(--color-gear-deck-light);
+  border-color: #FFFFFF;
+  color: #1F2937;
 }
 
 /* Game layout */
 .game-container {
-  @apply min-h-screen bg-background;
+  @apply min-h-screen;
+  background-color: var(--color-background);
+}
+
+/* Header area styling */
+.header-area {
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+}
+
+/* Progress track styling */
+.progress-segment {
+  @apply rounded;
+  background-color: var(--color-progress-empty);
+  border: 2px solid #FFFFFF;
+}
+
+.progress-segment.filled {
+  background-color: var(--color-progress-filled);
+}
+
+/* Deck areas */
+.trail-deck-area {
+  background-color: var(--color-background);
+  border: 3px solid #FFFFFF;
+  border-radius: 12px;
+}
+
+.bird-deck-area {
+  background-color: var(--color-background);
+  border: 3px solid #FFFFFF;
+  border-radius: 12px;
+}
+
+.gear-deck-area {
+  background-color: var(--color-background);
+  border: 3px solid #FFFFFF;
+  border-radius: 12px;
 }
 
 /* Custom scrollbar */
