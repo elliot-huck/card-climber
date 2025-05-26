@@ -36,7 +36,7 @@ function App() {
         </header>
 
         {/* Main Game Board Area */}
-        <main className="flex-1 flex p-6 gap-6">
+        <main className="flex-1 flex p-6 gap-6 bg-background">
           {/* Left Side - Trail and Bird Decks */}
           <section className="flex flex-col gap-6 w-80">
             {/* Trail Deck Area */}
@@ -61,7 +61,7 @@ function App() {
 
           {/* Right Side - Progress Track */}
           <aside className="w-32 flex flex-col items-center">
-            <div className="text-white text-lg font-bold mb-4">Progress 4/8</div>
+            <div className="text-white text-lg font-bold mb-4">Progress {player.progress}/{player.progressGoal}</div>
             <ProgressTrack />
           </aside>
         </main>

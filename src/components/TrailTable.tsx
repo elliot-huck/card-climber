@@ -17,7 +17,7 @@ export function TrailTable() {
 
       <div className="flex-1 space-y-4 overflow-y-auto">
         {activeTrails.length === 0 ? (
-          <div className="flex items-center justify-center h-64 text-text/50">
+          <div className="flex items-center justify-center h-64 text-white">
             <div className="text-center">
               <div className="text-4xl mb-2">🏔️</div>
               <p>No trails visible ahead.</p>
