@@ -1,0 +1,139 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Zone-based Theming */
+:root {
+  /* Base Zone (Valley) - Default theme */
+  --color-primary: #2D5F3F;
+  --color-secondary: #4A7C59;
+  --color-accent: #9ACD32;
+  --color-background: #F0F8F0;
+  --color-surface: #FFFFFF;
+  --color-text: #1F2937;
+  --color-border: #D1D5DB;
+  
+  /* Common UI colors */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  --color-info: #3B82F6;
+}
+
+/* Zone 1: Valley */
+[data-zone="valley"] {
+  --color-primary: #2D5F3F;
+  --color-secondary: #4A7C59;
+  --color-accent: #9ACD32;
+  --color-background: #F0F8F0;
+  --color-surface: #FFFFFF;
+  --color-text: #1F2937;
+  --color-border: #D1D5DB;
+}
+
+/* Zone 2: Forest */
+[data-zone="forest"] {
+  --color-primary: #1B4332;
+  --color-secondary: #2D5016;
+  --color-accent: #8FBC8F;
+  --color-background: #2C5F2D;
+  --color-surface: #F5F5DC;
+  --color-text: #1C2833;
+  --color-border: #A0A0A0;
+}
+
+/* Zone 3: Highlands */
+[data-zone="highlands"] {
+  --color-primary: #4A5568;
+  --color-secondary: #718096;
+  --color-accent: #ED8936;
+  --color-background: #E2E8F0;
+  --color-surface: #FFFFFF;
+  --color-text: #2D3748;
+  --color-border: #CBD5E0;
+}
+
+/* Zone 4: Peak */
+[data-zone="peak"] {
+  --color-primary: #2B6CB0;
+  --color-secondary: #3182CE;
+  --color-accent: #FED7D7;
+  --color-background: #EBF8FF;
+  --color-surface: #FFFFFF;
+  --color-text: #1A202C;
+  --color-border: #BEE3F8;
+}
+
+/* Time of Day Overlays */
+[data-time="dawn"] {
+  filter: sepia(0.1) saturate(1.1) hue-rotate(-10deg);
+}
+
+[data-time="morning"] {
+  filter: brightness(1.1) saturate(1.05);
+}
+
+[data-time="noon"] {
+  filter: brightness(1.15) saturate(1.1);
+}
+
+[data-time="afternoon"] {
+  filter: sepia(0.05) saturate(1.05) hue-rotate(5deg);
+}
+
+[data-time="evening"] {
+  filter: sepia(0.15) saturate(0.9) hue-rotate(15deg) brightness(0.9);
+}
+
+[data-time="dusk"] {
+  filter: sepia(0.2) saturate(0.8) hue-rotate(25deg) brightness(0.8);
+}
+
+[data-time="night"] {
+  filter: brightness(0.6) saturate(0.7) hue-rotate(-15deg);
+}
+
+/* Base styles */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: all 0.3s ease;
+}
+
+/* Card styles */
+.card {
+  @apply bg-surface border border-border rounded-lg shadow-sm hover:shadow-md transition-all duration-200;
+}
+
+.card-gear {
+  @apply aspect-[2/3] p-3 cursor-pointer select-none;
+}
+
+.card-trail {
+  @apply aspect-[3/2] p-4;
+}
+
+/* Game layout */
+.game-container {
+  @apply min-h-screen bg-background;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
